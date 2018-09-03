@@ -13,8 +13,8 @@
 
         <ImageView
             android:id="@+id/title_left"
-            android:layout_width="@dimen/dp_25"
-            android:layout_height="@dimen/dp_25"
+            android:layout_width="@dimen/dp_12"
+            android:layout_height="@dimen/dp_20"
             android:layout_centerVertical="true"
             android:src="@mipmap/go_back" />
 
