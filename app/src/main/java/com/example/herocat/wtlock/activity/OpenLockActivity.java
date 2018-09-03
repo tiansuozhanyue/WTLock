@@ -33,8 +33,8 @@ public class OpenLockActivity extends WTBaseActivity implements WTHttpUtil.WTCal
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open_lock, this, "望通智能锁", this);
         initView();
-        startLoading();
-        saveBLEData();
+//        startLoading();
+//        saveBLEData();
     }
 
     private void initView() {
@@ -67,8 +67,8 @@ public class OpenLockActivity extends WTBaseActivity implements WTHttpUtil.WTCal
                 break;
 
             case R.id.title_right://刷新
-                startLoading();
-                saveBLEData();
+//                startLoading();
+//                saveBLEData();
                 break;
 
             case R.id.open_lock://开锁
