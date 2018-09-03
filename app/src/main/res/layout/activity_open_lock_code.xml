@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_17"
+        android:text="开锁码"
+        android:textColor="@color/text_gray_color_a4"
+        android:textSize="@dimen/sp_20" />
+
+    <ImageView
+        android:layout_width="@dimen/dp_150"
+        android:layout_height="@dimen/dp_158"
+        android:layout_marginTop="@dimen/dp_28"
+        android:src="@mipmap/lock_door" />
+
+    <TextView
+        android:id="@+id/open_lock_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_54"
+        android:textColor="@color/text_gray_color_a4"
+        android:textSize="@dimen/sp_30" />
+
+    <View
+        android:layout_width="@dimen/dp_1"
+        android:layout_height="@dimen/dp_0"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:text="copuright"
+        android:textColor="@color/text_gray_color"
+        android:textSize="@dimen/sp_14" />
+
+
+</LinearLayout>
