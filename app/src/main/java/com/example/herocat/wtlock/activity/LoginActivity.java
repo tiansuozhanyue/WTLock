@@ -1,5 +1,7 @@
 package com.example.herocat.wtlock.activity;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,7 +15,6 @@ import com.accloud.service.ACException;
 import com.accloud.service.ACUserInfo;
 import com.example.herocat.wtlock.R;
 import com.example.herocat.wtlock.base.WTBaseActivity;
-import com.example.herocat.wtlock.utils.DisplayUtil;
 import com.example.herocat.wtlock.utils.LogUtil;
 import com.example.herocat.wtlock.utils.StringUtil;
 import com.example.herocat.wtlock.utils.ToastUtil;
