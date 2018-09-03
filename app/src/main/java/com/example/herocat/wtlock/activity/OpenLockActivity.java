@@ -2,8 +2,11 @@ package com.example.herocat.wtlock.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.accloud.cloudservice.AC;
@@ -22,11 +25,14 @@ import com.example.herocat.wtlock.utils.ToastUtil;
 import java.util.HashMap;
 import java.util.Map;
 
-public class OpenLockActivity extends WTBaseActivity implements WTHttpUtil.WTCallBack {
+public class OpenLockActivity extends WTBaseActivity implements WTHttpUtil.WTCallBack, CompoundButton.OnCheckedChangeListener {
 
     private TextView open_button, location, power, name;
     private LockBean.PayloadBean._$1Bean.ListBean lockBean;
-    private boolean flag;
+    private boolean lock_open;
+    private Switch swith_lock;
+    private boolean isClickAble = true;
+    private boolean swith_open;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,6 +51,7 @@ public class OpenLockActivity extends WTBaseActivity implements WTHttpUtil.WTCal
         location = findViewById(R.id.location);
         power = findViewById(R.id.power);
         name = findViewById(R.id.name);
+        swith_lock = findViewById(R.id.swith_lock);
 
         location.setText(lockBean.getDetail());
         power.setText(lockBean.getPower() + "%");
@@ -54,6 +61,7 @@ public class OpenLockActivity extends WTBaseActivity implements WTHttpUtil.WTCal
         findViewById(R.id.tip_button).setOnClickListener(this);
         findViewById(R.id.open_lock_temporary).setOnClickListener(this);
         open_button.setOnClickListener(this);
+        swith_lock.setOnCheckedChangeListener(this);
 
     }
 
@@ -72,14 +80,27 @@ public class OpenLockActivity extends WTBaseActivity implements WTHttpUtil.WTCal
                 break;
 
             case R.id.open_lock://开锁
-                if (flag) {
-                    open_button.setBackgroundResource(R.drawable.shape_button_blue);
-                    open_button.setText("关锁");
-                } else {
-                    open_button.setBackgroundResource(R.drawable.shape_button_gray);
-                    open_button.setText("开锁");
+                if (isClickAble) {
+                    if (lock_open) {
+                        open_button.setBackgroundResource(R.drawable.shape_button_blue);
+                        open_button.setText("关锁");
+                    } else {
+                        open_button.setBackgroundResource(R.drawable.shape_button_gray);
+                        open_button.setText("开锁");
+                    }
+                    lock_open = !lock_open;
+
+                    if (swith_open) {
+                        isClickAble = false;
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                isClickAble = true;
+                            }
+                        }, 5000);
+                    }
+
                 }
-                flag = !flag;
                 break;
 
             case R.id.open_lock_temporary://临时开锁码
@@ -115,4 +136,9 @@ public class OpenLockActivity extends WTBaseActivity implements WTHttpUtil.WTCal
         ToastUtil.toast(e.getMessage());
     }
 
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        swith_open = isChecked;
+        isClickAble = true;
+    }
 }
